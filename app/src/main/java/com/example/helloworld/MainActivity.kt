@@ -17,8 +17,6 @@ class MainActivity : AppCompatActivity() {
         diceImage = findViewById(id.dice_image)
         diceImage2 = findViewById(id.dice_new_image)
         rollButton.setOnClickListener { rollDice() }
-        val countUpButton: Button = findViewById(id.count_up_button)
-        countUpButton.setOnClickListener{ countUp() }
         val resetButton: Button = findViewById(id.reset_button)
         resetButton.setOnClickListener { reset() }
     }
@@ -39,18 +37,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun countUp(){
-//        val resultText: TextView = findViewById(R.id.result_text)
-//        if(resultText.text.toString() == "Hello World!"){
-//            resultText.text = "1"
-//        }else if (resultText.text.toString().toInt() < 6){
-//            val resultInt = resultText.text.toString().toInt()+1
-//            resultText.text = resultInt.toString()
-//        }
-    }
-
     private fun reset(){
-//        val resultText: TextView = findViewById(R.id.result_text)
-//        resultText.text = "0"
+        diceImage.setImageResource(drawable.empty_dice)
+        diceImage2.setImageResource(drawable.empty_dice)
     }
 }
