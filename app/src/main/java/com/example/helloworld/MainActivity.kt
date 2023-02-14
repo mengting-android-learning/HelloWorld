@@ -4,32 +4,39 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import com.example.helloworld.R.*
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var diceImage : ImageView
+    lateinit var diceImage2 : ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val rollButton: Button = findViewById(R.id.roll_button)
-        diceImage = findViewById(R.id.dice_image)
+        setContentView(layout.activity_main)
+        val rollButton: Button = findViewById(id.roll_button)
+        diceImage = findViewById(id.dice_image)
+        diceImage2 = findViewById(id.dice_new_image)
         rollButton.setOnClickListener { rollDice() }
-        val countUpButton: Button = findViewById(R.id.count_up_button)
+        val countUpButton: Button = findViewById(id.count_up_button)
         countUpButton.setOnClickListener{ countUp() }
-        val resetButton: Button = findViewById(R.id.reset_button)
+        val resetButton: Button = findViewById(id.reset_button)
         resetButton.setOnClickListener { reset() }
     }
 
     private fun rollDice() {
-        val drawableResource = when ((1..6).random()) {
-            1 -> R.drawable.dice_1
-            2 -> R.drawable.dice_2
-            3 -> R.drawable.dice_3
-            4 -> R.drawable.dice_4
-            5 -> R.drawable.dice_5
-            else -> R.drawable.dice_6
+        diceImage.setImageResource(getRandomImage())
+        diceImage2.setImageResource(getRandomImage())
+    }
+
+    private fun getRandomImage() : Int {
+        return when ((1..6).random()) {
+            1 -> drawable.dice_1
+            2 -> drawable.dice_2
+            3 -> drawable.dice_3
+            4 -> drawable.dice_4
+            5 -> drawable.dice_5
+            else -> drawable.dice_6
         }
-        diceImage.setImageResource(drawableResource)
     }
 
     private fun countUp(){
